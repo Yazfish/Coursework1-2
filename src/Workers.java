@@ -9,10 +9,11 @@ public class Workers {
 
         worker.addWorker("Иванов Иван Иванович", "Доставка", 2020);
         worker.addWorker("Иванов Петр Иванович", "Доставка", 1040);
-        worker.addWorker("Сергеев Иван Андреевич", "Склад", 2000);
-        worker.addWorker("Петров Алексей Григорьевич", "Склад", 2000);
+        worker.addWorker("Сергеев Иван Андреевич", "Доставка", 2000);
+        worker.addWorker("Петров Алексей Григорьевич", "Склад", 1000);
         worker.addWorker("Васечкин Иван Макарович", "Склад", 2000);
-        worker.addWorker("Иванов Иван Константинович", "Склад", 6000);
+        worker.addWorker("Иванов Иван Константинович", "Склад", 5000);
+
 
         worker.printAllWorkers();
         System.out.println();
@@ -25,13 +26,15 @@ public class Workers {
         worker.findWorkerDiv("Склад");
 
         System.out.println();
-        worker.findDivSalary( "Склад" );
+        worker.findDivSalary("Склад");
         System.out.println();
         worker.calcSalaryIncrWorkers();
         System.out.println();
         worker.findAvSalary("Склад");
-
-
+        System.out.println();
+        worker.findMinMaxSalary("Склад");
+        System.out.println();
+        worker.removeWorker("Иванов Петр Иванович");
 
     }
 }

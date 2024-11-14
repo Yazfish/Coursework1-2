@@ -8,6 +8,7 @@ public class EmplBook {
         this.worker = new Employee[10];
     }
 
+
     // Печать всех сотрудников
     public void printAllWorkers() {
         for (int i = 0; i < size; i++) {
@@ -31,10 +32,10 @@ public class EmplBook {
     }
 
     // удаление сотрудников по имени
-    public void removeWorker(String employeeName, String department, double salary) {
+    public void removeWorker(String employeeName) {
         for (int i = 0; i < worker.length; i++) {
             if (worker[i].getEmployeeName().equals(employeeName)) {
-                System.out.println(worker[i].getEmployeeName() + " удален");
+                System.out.println(worker[i].getEmployeeName() + " уволен, нафик таких - алкаш и прогульщик!");
                 System.arraycopy(worker, i + 1, worker, i, size - i - 1);
                 worker[size - 1] = null;
                 size--;
@@ -89,32 +90,57 @@ public class EmplBook {
             totalSalary = totalSalary + workers.getSalary();
 
         }
-        System.out.println("Текущая зарплата сотрудников = " + totalSalary);
-        System.out.println("Увеличение зарплаты на 15% составит " + totalSalary * incr);
+        System.out.println("Текущая зарплата всех сотрудников = " + totalSalary);
+        System.out.println("Увеличение зарплаты всех сотрудников на 15% составит " + totalSalary * incr);
     }
+
     // Средняя зп по отделу
     public void findAvSalary(String department) {
         double sum = 0d;
         double sumAvg = 0d;
+        int index = 0;
         for (int i = 0; i < size; i++) {
             Employee workers = worker[i];
             if (workers.getDepartment().equals(department)) {
+                index++;
                 sum += workers.getSalary();
-                sumAvg = sum / (i - 2);
+                sumAvg = sum / index;
 
             }
         }
 
         System.out.println("Средняя зарплата всех сотрудников отдела - " + department + " = " + sumAvg);
 
+
+    }
+    // Макс и мин зарплаты по отделу
+    public void findMinMaxSalary(String department) {
+        double maxWeeklySalary = worker[0].getSalary();
+        double minWeeklySalary = worker[0].getSalary();
+        for (int i = 0; i < size; i++) {
+            Employee workers = worker[i];
+            if (workers.getDepartment().equals(department)) {
+                for (i = 1; i < size; i++) {
+                    if (worker[i].getSalary() > maxWeeklySalary) {
+                        maxWeeklySalary = worker[i].getSalary();
+                    }
+                    if (worker[i].getSalary() < minWeeklySalary) {
+                        minWeeklySalary = worker[i].getSalary();
+                    }
+
+                }
+                System.out.println("Уровень зарплат в отделе - " + department + " составляет:");
+                System.out.println("Минимальная зарплата - " + minWeeklySalary);
+                System.out.println("Максимальная зарплата - " + maxWeeklySalary);
+            }
+        }
     }
 }
 
-
-// индексация зп+?
-// поиск по отделу мин зп
-// поиск по отделу макс зп
-// средняя зп по отделу+?
+// индексация зп+
+// поиск по отделу мин зп+
+// поиск по отделу макс зп+
+// средняя зп по отделу+
 // сумма по отделу +
 // печать списка по отделу +
 
