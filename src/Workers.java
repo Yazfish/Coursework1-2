@@ -34,7 +34,7 @@ public class Workers {
         System.out.println();
         worker.findMinMaxSalary("Склад");
         System.out.println();
-        worker.removeWorker("Иванов Петр Иванович");
+        worker.removeWorker("Иванов Петр Сергеевич");
 
     }
 }

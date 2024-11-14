@@ -39,8 +39,11 @@ public class EmplBook {
                 System.arraycopy(worker, i + 1, worker, i, size - i - 1);
                 worker[size - 1] = null;
                 size--;
-                return;
             }
+            if (worker[size] == null) {
+                System.out.println(employeeName + " не найден");
+            }
+            return;
         }
     }
 
@@ -113,6 +116,7 @@ public class EmplBook {
 
 
     }
+
     // Макс и мин зарплаты по отделу
     public void findMinMaxSalary(String department) {
         double maxWeeklySalary = worker[0].getSalary();
