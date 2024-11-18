@@ -7,12 +7,12 @@ public class Workers {
     public static void main(String[] args) {
         EmplBook worker = new EmplBook();
 
-        worker.addWorker("Иванов Иван Иванович", "Доставка", 2020);
-        worker.addWorker("Иванов Петр Иванович", "Доставка", 1040);
-        worker.addWorker("Сергеев Иван Андреевич", "Доставка", 2000);
-        worker.addWorker("Петров Алексей Григорьевич", "Склад", 1000);
-        worker.addWorker("Васечкин Иван Макарович", "Склад", 2000);
-        worker.addWorker("Иванов Иван Константинович", "Склад", 5000);
+        worker.addWorker("Иванов Иван Иванович", "Склад", 1020);
+        worker.addWorker("Иванов Петр Иванович", "Склад", 1040);
+        worker.addWorker("Сергеев Иван Андреевич", "Склад", 2000);
+        worker.addWorker("Петров Алексей Григорьевич", "Склад", 1500);
+        worker.addWorker("Васечкин Иван Макарович", "Доставка", 500);
+        worker.addWorker("Иванов Иван Константинович", "Доставка", 7000);
 
 
         worker.printAllWorkers();
@@ -23,18 +23,19 @@ public class Workers {
         System.out.println();
         worker.findWorker("Иванов Петр Сергеевич");
         System.out.println();
-        worker.findWorkerDiv("Склад");
+        worker.findWorkerDiv("Доставка");
 
         System.out.println();
-        worker.findDivSalary("Склад");
+        worker.findDivSalary("Доставка");
         System.out.println();
-        worker.calcSalaryIncrWorkers();
+        worker.findAvSalary("Доставка");
         System.out.println();
-        worker.findAvSalary("Склад");
+        worker.findMinMaxSalary();
         System.out.println();
-        worker.findMinMaxSalary("Склад");
+        worker.removeWorker("Сергеddddd");
         System.out.println();
-        worker.removeWorker("Иванов Петр Сергеевич");
+        worker.calcSalaryIncrWorkers("Склад");
+
 
     }
 }

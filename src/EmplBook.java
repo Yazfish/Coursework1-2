@@ -8,7 +8,6 @@ public class EmplBook {
         this.worker = new Employee[10];
     }
 
-
     // Печать всех сотрудников
     public void printAllWorkers() {
         for (int i = 0; i < size; i++) {
@@ -34,18 +33,21 @@ public class EmplBook {
     // удаление сотрудников по имени
     public void removeWorker(String employeeName) {
         for (int i = 0; i < worker.length; i++) {
+            if (worker[i] == null) {
+                System.out.println(employeeName + " не найден");
+                return;
+            }
             if (worker[i].getEmployeeName().equals(employeeName)) {
-                System.out.println(worker[i].getEmployeeName() + " уволен, нафик таких - алкаш и прогульщик!");
+                System.out.println(worker[i].getEmployeeName() + ". Табельный номер: " + worker[i].getId() + " уволен, нафик таких - алкаш и прогульщик!");
                 System.arraycopy(worker, i + 1, worker, i, size - i - 1);
                 worker[size - 1] = null;
                 size--;
+                return;
+
             }
-            if (worker[size] == null) {
-                System.out.println(employeeName + " не найден");
-            }
-            return;
         }
     }
+
 
     // Поиск сотрудника по имени
     public void findWorker(String employeeName) {
@@ -83,18 +85,22 @@ public class EmplBook {
 
     }
 
-    //Индексация Зарплаты на 15% (incr)
 
-    public void calcSalaryIncrWorkers() {
+    //Индексация Зарплаты отдела на 15% (incr)
+
+    public void calcSalaryIncrWorkers(String department) {
         double totalSalary = 0d;
-        double incr = 1.15;
+        double incr = 15;
+        double incrSalary = 0d;
         for (int i = 0; i < size; i++) {
             Employee workers = worker[i];
-            totalSalary = totalSalary + workers.getSalary();
-
+            if (workers.getDepartment().equals(department)) {
+                totalSalary = totalSalary + workers.getSalary();
+                incrSalary = totalSalary + (totalSalary * incr / 100);
+            }
         }
-        System.out.println("Текущая зарплата всех сотрудников = " + totalSalary);
-        System.out.println("Увеличение зарплаты всех сотрудников на 15% составит " + totalSalary * incr);
+        System.out.println("Текущая зарплата всех сотрудников отдела " + department + " составляет: " + totalSalary);
+        System.out.println("Увеличение зарплаты всех сотрудников отдела " + department + " на " + incr + "%, составит - " + incrSalary);
     }
 
     // Средняя зп по отделу
@@ -107,39 +113,34 @@ public class EmplBook {
             if (workers.getDepartment().equals(department)) {
                 index++;
                 sum += workers.getSalary();
-                sumAvg = sum / index;
-
             }
         }
-
+        sumAvg = sum / index;
         System.out.println("Средняя зарплата всех сотрудников отдела - " + department + " = " + sumAvg);
-
 
     }
 
-    // Макс и мин зарплаты по отделу
-    public void findMinMaxSalary(String department) {
+
+    // Макс и мин зарплаты сотрудников
+    public void findMinMaxSalary() {
         double maxWeeklySalary = worker[0].getSalary();
         double minWeeklySalary = worker[0].getSalary();
         for (int i = 0; i < size; i++) {
-            Employee workers = worker[i];
-            if (workers.getDepartment().equals(department)) {
-                for (i = 1; i < size; i++) {
-                    if (worker[i].getSalary() > maxWeeklySalary) {
+            if (worker[i].getSalary() > maxWeeklySalary) {
                         maxWeeklySalary = worker[i].getSalary();
                     }
                     if (worker[i].getSalary() < minWeeklySalary) {
                         minWeeklySalary = worker[i].getSalary();
                     }
-
                 }
-                System.out.println("Уровень зарплат в отделе - " + department + " составляет:");
-                System.out.println("Минимальная зарплата - " + minWeeklySalary);
-                System.out.println("Максимальная зарплата - " + maxWeeklySalary);
+                System.out.println("Минимальная зарплата на предприятии - " + minWeeklySalary);
+                System.out.println("Максимальная зарплата на предприятии - " + maxWeeklySalary);
             }
+
         }
-    }
-}
+
+
+
 
 // индексация зп+
 // поиск по отделу мин зп+

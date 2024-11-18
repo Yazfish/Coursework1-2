@@ -42,6 +42,10 @@ public class Employee {
 
         this.department = department;
     }
+    public void setEmployeeName(String employeeName) {
+
+        this.employeeName = employeeName;
+    }
 
     @Override
     public boolean equals(Object o) {
